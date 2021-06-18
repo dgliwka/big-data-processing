@@ -1,0 +1,5 @@
+- name: Remove snap package
+  apt:
+    name: snapd
+    state: absent
+  become: true

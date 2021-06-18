@@ -1,0 +1,10 @@
+- name: Apply common configuration to all nodes
+  import_playbook: common.yml
+
+- hosts: all
+  roles:
+    - role: geerlingguy.docker
+      become: yes
+      vars:
+        docker_install_compose: true
+        docker_users: [ ubuntu ]

@@ -1,0 +1,22 @@
+- name: Install mosh
+  apt:
+    name:
+      - mosh
+      - iptables-persistent
+    state: latest
+    update_cache: true
+  become: true
+
+- name: Allow mosh port on firewall
+  iptables:
+    action: insert
+    chain: INPUT
+    rule_num: '1'
+    protocol: udp
+    destination_port: 60000:61000
+    jump: ACCEPT
+  become: true
+
+- name: save iptables
+  shell: iptables-save > /etc/iptables/rules.v4
+  become: true

@@ -1,0 +1,11 @@
+- name: Copy .vimrc
+  copy:
+    src: ~/.vimrc
+    dest: ~/.vimrc
+    force: yes
+
+- name: Copy htoprc
+  copy:
+    src: ~/.config/htop/htoprc
+    dest: ~/.config/htop/
+    force: yes
